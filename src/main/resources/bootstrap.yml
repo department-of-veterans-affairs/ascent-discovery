@@ -1,0 +1,6 @@
+spring: 
+  application: 
+    name: "@project.name@"
+  config: 
+    name: "@project.name@"
+  
