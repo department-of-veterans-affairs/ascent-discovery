@@ -1,10 +1,10 @@
 # README #
 
-This page documents all the steps that are necessary to get the *ASCENT* Discovery service up and running locally and other environments.
+This page documents all the steps that are necessary to get the **Ascent Discovery** service up and running locally and other environments.
 
 ## What is this repository for? ##
 
-This is a repository for the ascent discovery service that provides the Service Registry feature. All other core services are registered to the discovery service.  
+This is a repository for the **ascent discovery** service that provides the **Service Registry** feature. All other core services are registered to the discovery service.  
 
 ## Core Services Overview ##
 
