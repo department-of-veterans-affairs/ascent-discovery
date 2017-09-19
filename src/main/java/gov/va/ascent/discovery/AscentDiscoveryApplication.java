@@ -30,7 +30,7 @@ import com.netflix.appinfo.AmazonInfo;
 @EnableDiscoveryClient
 public class AscentDiscoveryApplication {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(AscentDiscoveryApplication.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AscentDiscoveryApplication.class);
 	
 	@Value("${server.port:8761}") 
     private int port;
@@ -41,7 +41,7 @@ public class AscentDiscoveryApplication {
 
 	@Bean
 	public EmbeddedServletContainerFactory servletContainer() {
-	    TomcatEmbeddedServletContainerFactory tomcatFactory = new TomcatEmbeddedServletContainerFactory() {
+	    return new TomcatEmbeddedServletContainerFactory() {
 	        @Override
 	        protected void postProcessContext(Context context) {
 	            final int cacheSize = 40 * 1024;
@@ -52,7 +52,6 @@ public class AscentDiscoveryApplication {
 	            LOGGER.info(String.format("New cache size (KB): %d", context.getResources().getCacheMaxSize()));
 	        }
 	    };
-	    return tomcatFactory;
 	}
 	
 	@Bean
