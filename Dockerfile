@@ -1,4 +1,5 @@
-FROM java:8
+FROM jluck/ascent-base
 
-ADD target/ascent-discovery-*.jar /ascent-discovery.jar
-ENTRYPOINT ["java", "-Xms64m", "-Xmx256m", "-jar", "/ascent-discovery.jar"]
+ENV JAR_FILE "/ascent-discovery.jar"
+ADD target/ascent-discovery-*.jar $JAR_FILE
+
