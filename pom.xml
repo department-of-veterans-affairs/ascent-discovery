@@ -16,7 +16,7 @@
 	<name>${project.artifactId}</name>
 	<description>Ascent Project for Discovery Server</description>
 	
-	<!-- Docker properties to add min and max memory for spring boot jar start up -->
+	<!-- Docker properties to add minimum and maximum memory for spring boot jar start up -->
     <properties>
 		<docker.java.opts.ms>-Xms64m</docker.java.opts.ms>
 		<docker.java.opts.mx>-Xmx256m</docker.java.opts.mx>
