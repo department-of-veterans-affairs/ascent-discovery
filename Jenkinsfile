@@ -1,9 +1,5 @@
 @Library('ascent@development') _
 
-mavenPipeline {
-    
-}
-
-dockerPipeline {
+microservicePipeline {
     imageName = 'ascent/ascent-discovery'
 }
