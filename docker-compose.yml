@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ascent-discovery:
+    image: ascent/ascent-discovery
+    hostname: ascent-discovery
+    environment:
+      - SPRING_PROFILES_ACTIVE=aws-prod
+      - VAULT_ADDR=${VAULT_ADDR}
+      - VAULT_TOKEN=${VAULT_TOKEN}
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8761/health"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+    networks:
+        - ascentnet
+  
+networks:
+  ascentnet:
+    driver: overlay
