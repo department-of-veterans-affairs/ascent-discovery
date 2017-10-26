@@ -14,6 +14,8 @@ services:
         retries: 5
     networks:
         - ascentnet
+    ports:
+        - "8761"
   
 networks:
   ascentnet:
