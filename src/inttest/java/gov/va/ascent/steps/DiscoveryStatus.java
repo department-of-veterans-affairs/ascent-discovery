@@ -32,7 +32,7 @@ public class DiscoveryStatus extends BaseStepDef {
 	public void makerequesustoappsurlDelete() throws Throwable {
 		invokeAPIUsingGet("", "discoveryURL");
 	}
-	@Then("^the response code must be 200 for discovery service(\\d+)$")
+	@Then("^the response code must be for discovery service (\\d+)$")
 	public void serviceresposestatuscodemustbe(int intStatusCode) throws Throwable {
 		ValidateStatusCode(intStatusCode);
 	}

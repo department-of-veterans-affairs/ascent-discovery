@@ -12,8 +12,8 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 		"html:target/site/cucumber-pretty", "json:target/cucumber.json" }, features = {
 
-				"src/test/resources/gov/va/ascent/feature/discoverystatus.feature",
-				"src/test/resources/gov/va/ascent/feature/register-deregister-eurekaservice.feature",
+				"src/inttest/resources/gov/va/ascent/feature/discoverystatus.feature",
+				"src/inttest/resources/gov/va/ascent/feature/register-deregister-eurekaservice.feature",
 
 				
 				},
