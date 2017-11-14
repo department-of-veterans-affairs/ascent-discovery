@@ -1,7 +1,7 @@
-Feature: Check the instances currently running with eureka
+Feature: Register and delete a service with eureka and verify the status 
 
   @registertestservice
-  Scenario Outline: Register service with eureka
+  Scenario Outline: Register service with eureka and verify the status
     Given I pass the header information for discovery
       | Content-Type | application/xml |
       | Pragma       | no-cache        |
@@ -13,7 +13,7 @@ Feature: Check the instances currently running with eureka
     | /eureka/apps/TestApp | register-eureka-service.xml | 
 
     @deleteservice
-  Scenario Outline: Delete the registered service with eureka
+  Scenario Outline: Delete the registered service with eureka and verify the ststus
     Given I pass header information for discovery
       | Content-Type | application/xml |
       | Pragma       | no-cache        |
