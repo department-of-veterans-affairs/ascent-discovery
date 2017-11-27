@@ -15,14 +15,17 @@ security:
 eureka:
   instance:
     hostname: ${server.name:localhost}
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
     metadataMap:
       hostname : ${eureka.instance.hostname}
   client:
     registerWithEureka: false
     fetchRegistry: false
   server:
-    enableSelfPreservation: true
-    
+    enableSelfPreservation: false
+    waitTimeInMsWhenSyncEmpty: 0
+    evictionIntervalTimerInMs: 10000
 ---
 
 spring:
