@@ -15,30 +15,43 @@ security:
 eureka:
   instance:
     hostname: ${server.name:localhost}
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
     metadataMap:
       hostname : ${eureka.instance.hostname}
   client:
     registerWithEureka: false
     fetchRegistry: false
   server:
-    enableSelfPreservation: true
-    
----
+    enableSelfPreservation: false
+    waitTimeInMsWhenSyncEmpty: 0
+    evictionIntervalTimerInMs: 10000
 
+---
 spring:
-    profiles: aws-ci, aws-stage, aws-prod
+    profiles: docker-demo, aws-ci, aws-stage, aws-prod
 
 eureka: 
   shouldBatchReplication: true
-  #In the AWS cloud environment, pass in the java commandline property -Deureka.datacenter=cloud so that 
-  #the Eureka Client/Server knows to initialize the information specific to AWS cloud.
-  datacenter: cloud
-  #client: 
-  # registerWithEureka: true
-  # serviceUrl:
-  #   defaultZone: http://${discovery.username:eureka}:${discovery.password:default}@${discovery.server.peer1.name:ascent-discovery}:${discovery.server.port:8761}/eureka/,http://${discovery.username:eureka}:${discovery.password:default}@${discovery.server.peer2.name:ascent-discovery}:${discovery.server.port:8761}/eureka/
+  client: 
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://${discovery.username:eureka}:${discovery.password:default}@${discovery.server.peer.name:ascent-discovery}:${discovery.server.peer.port:8761}/eureka/
 ---
 spring:
     profiles: aws-prod
 eureka: 
-  environment: prod
+  environment: PROD
+  datacenter: cloud
+---
+spring:
+    profiles: aws-stage
+eureka: 
+  environment: STAGE
+  datacenter: cloud
+---
+spring:
+    profiles: aws-ci
+eureka: 
+  environment: CI
+  datacenter: cloud
