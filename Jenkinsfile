@@ -12,4 +12,5 @@ microservicePipeline {
     ]
     testEnvironment = ['docker-compose.yml']
     serviceToTest = 'ascent-discovery'
+    deployWaitTime = 60
 }
