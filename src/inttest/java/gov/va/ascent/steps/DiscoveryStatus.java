@@ -12,15 +12,16 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import gov.va.ascent.util.BaseStepDef;
-import gov.va.ascent.util.RESTConfig;
+
 
 public class DiscoveryStatus extends BaseStepDef {
 
-	final Logger log = LoggerFactory.getLogger(RESTConfig.class);
-
+	final Logger log = LoggerFactory.getLogger(DiscoveryStatus.class);
+	private String discoveryURL;
 	@Before({ "@discoverystatus" })
 	public void setUpREST() {
 		initREST();
+		discoveryURL = restConfig.getPropertyName("discoveryURL");
 	}
 
 	@Given("^I pass the header information for discovery service$")
@@ -30,7 +31,7 @@ public class DiscoveryStatus extends BaseStepDef {
 
 	@When("^user makes a request to Discovery URL$")
 	public void makerequesustoappsurlDelete() throws Throwable {
-		invokeAPIUsingGet("", "discoveryURL");
+		invokeAPIUsingGet(discoveryURL, false);
 	}
 	@Then("^the response code must be for discovery service (\\d+)$")
 	public void serviceresposestatuscodemustbe(int intStatusCode) throws Throwable {
