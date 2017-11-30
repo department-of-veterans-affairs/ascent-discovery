@@ -16,6 +16,8 @@ services:
         - ascentnet
     ports:
         - "8761"
+    labels:
+      gov.va.ascent.testable: "true"
   
 networks:
   ascentnet:
