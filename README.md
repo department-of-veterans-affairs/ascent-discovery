@@ -10,6 +10,6 @@ This is a repository for the **ascent discovery** service that provides the **Se
 **Service Application Port**
 * Discovery - 8761
 
-See [Ascent-Discovery](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/Ascent-Discovery) for additional details.
+See [Ascent-Discovery](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/PLATFORM-:-Ascent-Discovery) for additional details.
 
-See [Ascent Quick Start Guide](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/Ascent-Quick-Start-Guide) for the software prerequisites.
+See [Ascent Quick Start Guide](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/DEV-:-Platform-Quick-Start-Guide) for the software prerequisites.
