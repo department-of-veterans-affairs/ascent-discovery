@@ -13,7 +13,8 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import gov.va.ascent.util.BaseStepDef;
+import gov.va.ascent.test.framework.restassured.BaseStepDef;
+import gov.va.ascent.test.framework.service.VaultService;
 
 public class DeleteService extends BaseStepDef {
 
@@ -23,7 +24,7 @@ public class DeleteService extends BaseStepDef {
 	@Before({ "@deleteservice" })
 	public void setUpREST() {
 		initREST();
-		discoveryURL = restConfig.getPropertyName("discoveryURL");
+		discoveryURL = getDiscoveryUrl();
 	}
 
 	@Given("^I pass header information for discovery$")
@@ -57,4 +58,8 @@ public class DeleteService extends BaseStepDef {
 		postProcess(scenario);
 	}
 
+	private String getDiscoveryUrl() {
+		String discoveryURL =  restConfig.getPropertyName("discoveryURL");
+		return VaultService.replaceUrlWithVaultCredentialDiscovery(discoveryURL);
+    }
 }
