@@ -14,7 +14,7 @@ security:
       password: ${discovery.password:default}
 eureka:
   instance:
-    hostname: ${server.name:localhost}
+    hostname: "${INSTANCE_HOST_NAME:localhost}"
     leaseRenewalIntervalInSeconds: 10
     leaseExpirationDurationInSeconds: 30
     metadataMap:
