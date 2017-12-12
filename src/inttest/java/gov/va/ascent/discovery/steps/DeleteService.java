@@ -1,4 +1,4 @@
-package gov.va.ascent.steps;
+package gov.va.ascent.discovery.steps;
 
 import static org.junit.Assert.assertFalse;
 

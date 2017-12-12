@@ -8,22 +8,15 @@ import cucumber.api.junit.Cucumber;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(strict = false, format = { "pretty",
-
-		"html:target/site/cucumber-pretty", "json:target/cucumber.json" }, features = {
-
-				"src/inttest/resources/gov/va/ascent/feature/discoverystatus.feature",
-				"src/inttest/resources/gov/va/ascent/feature/register-deregister-eurekaservice.feature",
-
-				
-				},
-
-		glue = { "gov.va.ascent.steps" })
+@CucumberOptions(strict = false, plugin = {"pretty",
+		"html:target/site/cucumber-pretty", "json:target/cucumber.json"}, 
+		features = {"src/inttest/resources/gov/va/ascent/discovery/feature"},
+		glue = "gov.va.ascent.discovery.steps")
 public class AscentRunner extends AbstractTestNGCucumberTests {
 
 	@BeforeSuite(alwaysRun = true)
 	public void setUp() throws Exception {
-		System.out.println("Before run------------------------");
+		System.out.println("setUp method");
 	}
 
 }
