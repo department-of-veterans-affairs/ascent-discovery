@@ -36,7 +36,7 @@ public class DiscoveryStatus extends BaseStepDef {
 	}
 	@Then("^the response code must be for discovery service (\\d+)$")
 	public void serviceresposestatuscodemustbe(int intStatusCode) throws Throwable {
-		ValidateStatusCode(intStatusCode);
+		validateStatusCode(intStatusCode);
 	}
 
 

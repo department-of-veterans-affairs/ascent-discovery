@@ -39,7 +39,7 @@ public class DeleteService extends BaseStepDef {
 
 	@Then("^the response code must be for deleted service (\\d+)$")
 	public void serviceresposestatuscodemustbe(int intStatusCode) throws Throwable {
-		ValidateStatusCode(intStatusCode);
+		validateStatusCode(intStatusCode);
 	}
 
 	@When("user makes a request to verify instance URL after delete \"([^\"]*)\"$")
