@@ -86,14 +86,14 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<projectName>ascent-discovery</projectName>
+							<projectName>${project.artifactId}</projectName>
 							<outputDirectory>${project.build.directory}/site/cucumber-reports
 							</outputDirectory>
 							<cucumberOutput>${project.build.directory}/cucumber.json
 							</cucumberOutput>
 							<skippedFails>true</skippedFails>
 							<enableFlashCharts>false</enableFlashCharts>
-							<buildNumber>42</buildNumber>
+							<buildNumber>${project.version}</buildNumber>
 						</configuration>
 					</execution>
 				</executions>
