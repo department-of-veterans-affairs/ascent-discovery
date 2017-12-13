@@ -13,8 +13,8 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import gov.va.ascent.discovery.util.AppUtil;
 import gov.va.ascent.test.framework.restassured.BaseStepDef;
-import gov.va.ascent.test.framework.service.VaultService;
 
 
 public class RegisterService extends BaseStepDef {
@@ -24,7 +24,7 @@ public class RegisterService extends BaseStepDef {
 	@Before({ "@registertestservice" })
 	public void setUpREST() {
 		initREST();
-		discoveryURL = getDiscoveryUrl();
+		discoveryURL = AppUtil.getBaseURL();
 	}
 	
 
@@ -64,9 +64,4 @@ public class RegisterService extends BaseStepDef {
 	public void cleanUp(Scenario scenario) {
 		postProcess(scenario);
 	}
-
-	private String getDiscoveryUrl() {
-		String discoveryURL =  restConfig.getPropertyName("discoveryURL");
-		return VaultService.replaceUrlWithVaultCredentialDiscovery(discoveryURL);
-    }
 }
