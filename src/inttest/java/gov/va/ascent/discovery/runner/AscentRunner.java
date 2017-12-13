@@ -1,6 +1,8 @@
 package gov.va.ascent.discovery.runner;
 
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeSuite;
 
 import cucumber.api.CucumberOptions;
@@ -14,9 +16,11 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 		glue = "gov.va.ascent.discovery.steps")
 public class AscentRunner extends AbstractTestNGCucumberTests {
 
+	final Logger LOGGER = LoggerFactory.getLogger(AscentRunner.class);
+	
 	@BeforeSuite(alwaysRun = true)
 	public void setUp() throws Exception {
-		System.out.println("setUp method");
+		LOGGER.debug("setUp method");
 	}
 
 }
