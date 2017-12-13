@@ -3,13 +3,17 @@ package gov.va.ascent.discovery.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import gov.va.ascent.test.framework.service.RESTConfigService;
 import gov.va.ascent.test.framework.service.VaultService;
 import gov.va.ascent.test.framework.util.AppConstants;
 import gov.va.ascent.test.framework.util.RESTUtil;
 
 public class AppUtil {
-
+	
+	private static Logger log = LoggerFactory.getLogger(AppUtil.class);
 	private static final Pattern urlPattern = Pattern.compile("(http|https)://([A-Za-z0-9\\-\\.]+)(:(\\d+))$");
 	
 	private AppUtil() {
@@ -36,7 +40,7 @@ public class AppUtil {
 			String finalUrl = protocol + "://" + userName + ":" + password + "@" + host + port;
 			return finalUrl;
 		}
-		System.out.println(baseURL);
+		log.debug("Base URL: {}", baseURL);
 		return baseURL;
 	}
 }
