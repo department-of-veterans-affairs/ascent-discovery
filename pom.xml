@@ -7,18 +7,19 @@
 		<groupId>gov.va.ascent</groupId>
 		<artifactId>ascent-platform-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/>
+		<relativePath />
 	</parent>
-	
+
 	<artifactId>ascent-discovery</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>${project.artifactId}</name>
 	<description>Ascent Project for Discovery Server</description>
-	
-	<!-- Docker properties to add minimum and maximum memory for spring boot jar start up -->
-    <properties>
+
+	<!-- Docker properties to add minimum and maximum memory for spring boot 
+		jar start up -->
+	<properties>
 		<docker.java.opts.ms>-Xms64m</docker.java.opts.ms>
 		<docker.java.opts.mx>-Xmx256m</docker.java.opts.mx>
 	</properties>
@@ -33,47 +34,60 @@
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
 		<dependency>
- 		    <groupId>org.springframework.boot</groupId>
- 		    <artifactId>spring-boot-starter-security</artifactId>
- 		</dependency>
- 		<dependency>
- 		    <groupId>org.springframework.cloud</groupId>
- 		    <artifactId>spring-cloud-aws-core</artifactId>
- 		</dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-aws-core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 		</dependency>
-		
+
 		<!-- ascent logging and audit configurations -->
 		<dependency>
 			<groupId>gov.va.ascent</groupId>
 			<artifactId>ascent-platform-starter-logger</artifactId>
 		</dependency>
-		
-		 <!-- logstash logback encoder -->
+
+		<!-- logstash logback encoder -->
 		<dependency>
 			<groupId>net.logstash.logback</groupId>
 			<artifactId>logstash-logback-encoder</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>gov.va.ascent</groupId>
 			<artifactId>ascent-test-framework</artifactId>
 			<version>${ascent.test.framework.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 	</dependencies>
-	
-	 <build>
+
+	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/inttest/resources/testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<parallel>classes</parallel>
+					<forkCount>10</forkCount>
+					<reuseForks>false</reuseForks>
+					<threadCount>10</threadCount>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>
@@ -100,5 +114,5 @@
 			</plugin>
 		</plugins>
 	</build>
-			
+
 </project>
