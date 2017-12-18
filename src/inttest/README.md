@@ -38,7 +38,7 @@ CI : mvn -Ddockerfile.skip=true integration-test -Pinttest -Dtest.env=ci -DX-Vau
   
 CI: mvn -Ddockerfile.skip=true integration-test -Pinttest -DX-Vault-Token=<<token>> -DbaseURL=https://ci.internal.vets-api.gov:8761 -Dvault.url=https://vault.internal.vets-api.gov:8200/v1/secret/ascent-discovery
   
-STAGE : mvn -Ddockerfile.skip=true integration-test -Pinttest -Dtest.env=stage -DX-Vault-Token=<<token>> -DbaseURL=https://ci.internal.vets-api.gov:8761
+STAGE : mvn -Ddockerfile.skip=true integration-test -Pinttest -Dtest.env=stage -DX-Vault-Token=<<token>> -DbaseURL=https://stage.internal.vets-api.gov:8761
   
 STAGE: mvn -Ddockerfile.skip=true integration-test -Pinttest -DX-Vault-Token=<<token>> -DbaseURL=https://stage.internal.vets-api.gov:8761 -Dvault.url=https://vault.internal.vets-api.gov:8200/v1/secret/ascent-discovery
 
