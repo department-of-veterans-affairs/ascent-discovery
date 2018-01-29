@@ -30,7 +30,7 @@ src/inttest/resources/config/vetsapi-stage.properties – STAGE configuration pr
 ## Execution ##
 **Command Line:** Use below command(s) to execute the discovery acceptance test. 
 
-Default Local: mvn verify –Pinttest 
+Default Local: mvn -Ddockerfile.skip=true integration-test -Pinttest
 
 Use below sample commands to execute for different environment: 
   
