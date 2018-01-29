@@ -11,7 +11,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import gov.va.ascent.discovery.util.AppUtil;
+import gov.va.ascent.discovery.util.DiscoveryAppUtil;
 import gov.va.ascent.test.framework.restassured.BaseStepDef;
 import gov.va.ascent.test.framework.service.VaultService;
 
@@ -23,7 +23,7 @@ public class DiscoveryStatus extends BaseStepDef {
 	@Before({ "@discoverystatus" })
 	public void setUpREST() {
 		initREST();
-		discoveryURL = AppUtil.getBaseURL();
+		discoveryURL = DiscoveryAppUtil.getBaseURL();
 	}
 
 	@Given("^I pass the header information for discovery service$")
