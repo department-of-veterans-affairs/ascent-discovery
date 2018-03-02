@@ -23,9 +23,9 @@ src/inttest/java/gov/va/ascent/discovery/steps- The implementation steps related
 
 src/inttest/java/gov/va/ascent/discovery/runner - Cucumber runner class that contains all feature file entries that needs to be executed at runtime. The annotations provided in the cucumber runner class will assist in bridging the features to step definitions.
 
-src/inttest/resources/config/vetsapi-ci.properties – CI configuration properties such as URL are specified here.
+src/inttest/resources/config/vetservices-ci.properties – CI configuration properties such as URL are specified here.
 
-src/inttest/resources/config/vetsapi-stage.properties – STAGE configuration properties such as URL are specified here.
+src/inttest/resources/config/vetservices-stage.properties – STAGE configuration properties such as URL are specified here.
 
 ## Execution ##
 **Command Line:** Use below command(s) to execute the discovery acceptance test. 
