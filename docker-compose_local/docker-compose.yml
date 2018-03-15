@@ -3,7 +3,7 @@ services:
   ascent-discovery:
     image: ascent/ascent-discovery
     build:
-      context: ..
+      context: ../../ascent-discovery
     hostname: ascent-discovery
     ports:
      - "8761:8761"
