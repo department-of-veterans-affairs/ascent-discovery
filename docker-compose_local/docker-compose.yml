@@ -23,7 +23,7 @@ services:
   ascent-discovery-peer:
     image: ascent/ascent-discovery
     build: 
-      context: ..
+      context: ../../ascent-discovery
     hostname: ascent-discovery-peer
     ports:
      - "8861:8761"
