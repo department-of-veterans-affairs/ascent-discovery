@@ -36,10 +36,10 @@ Use below sample commands to execute for different environment:
   
 CI : mvn -Ddockerfile.skip=true integration-test -Pinttest -Dtest.env=ci -DX-Vault-Token=<<token>> -DbaseURL=https://ci.internal.vets-api.gov:8761
   
-CI: mvn -Ddockerfile.skip=true integration-test -Pinttest -DX-Vault-Token=<<token>> -DbaseURL=https://ci.internal.vets-api.gov:8761 -Dvault.url=https://vault.internal.vets-api.gov:8200/v1/secret/ascent-discovery
+CI: mvn -Ddockerfile.skip=true integration-test -Pinttest -DX-Vault-Token=<<token>> -Dtest.env=ci -DbaseURL=https://ci.internal.vets-api.gov:8761 -Dvault.url.domain=https://vault.internal.vets-api.gov:8200/v1/secret/ascent-discovery
   
 STAGE : mvn -Ddockerfile.skip=true integration-test -Pinttest -Dtest.env=stage -DX-Vault-Token=<<token>> -DbaseURL=https://stage.internal.vets-api.gov:8761
   
-STAGE: mvn -Ddockerfile.skip=true integration-test -Pinttest -DX-Vault-Token=<<token>> -DbaseURL=https://stage.internal.vets-api.gov:8761 -Dvault.url=https://vault.internal.vets-api.gov:8200/v1/secret/ascent-discovery
+STAGE: mvn -Ddockerfile.skip=true integration-test -Pinttest -DX-Vault-Token=<<token>> -Dtest.env=stage -DbaseURL=https://stage.internal.vets-api.gov:8761 -Dvault.url.domain=https://vault.internal.vets-api.gov:8200/v1/secret/ascent-discovery
 
 The parameter X-Vault-Token is not valid for local environment. It is passed thru pipeline. 
