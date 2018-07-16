@@ -4,7 +4,6 @@ import org.apache.catalina.Context;
 import org.apache.catalina.webresources.StandardRoot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
@@ -14,7 +13,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
 
 /**
- * An <tt>Ascent Discovery Server</tt> enabled for Spring Boot Application and 
+ * An <tt>Ascent Discovery Server</tt> enabled for Spring Boot Application and
  * Spring Cloud Netflix Eureka service registry.
  *
  */
@@ -24,26 +23,28 @@ import org.springframework.context.annotation.Bean;
 public class AscentDiscoveryApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AscentDiscoveryApplication.class);
-	
-	@Value("${server.port:8761}") 
-    private int port;
-	
-	public static void main(String[] args) {	
-        SpringApplication.run(AscentDiscoveryApplication.class, args);
+
+	/*
+	 * @ V a l u e("${s e r v e r . p o r t:8761}")
+	 * p r i v a t e i n t port;
+	 */
+
+	public static void main(final String[] args) {
+		SpringApplication.run(AscentDiscoveryApplication.class, args);
 	}
 
 	@Bean
 	public EmbeddedServletContainerFactory servletContainer() {
-	    return new TomcatEmbeddedServletContainerFactory() {
-	        @Override
-	        protected void postProcessContext(Context context) {
-	            final int cacheSize = 40 * 1024;
-	            StandardRoot standardRoot = new StandardRoot(context);
-	            standardRoot.setCacheMaxSize(cacheSize);
-	            context.setResources(standardRoot); // This is what made it work in my case.
+		return new TomcatEmbeddedServletContainerFactory() {
+			@Override
+			protected void postProcessContext(final Context context) {
+				final int cacheSize = 40 * 1024;
+				final StandardRoot standardRoot = new StandardRoot(context);
+				standardRoot.setCacheMaxSize(cacheSize);
+				context.setResources(standardRoot); // This is what made it work in my case.
 
-	            LOGGER.info(String.format("New cache size (KB): %d", context.getResources().getCacheMaxSize()));
-	        }
-	    };
+				LOGGER.info(String.format("New cache size (KB): %d", context.getResources().getCacheMaxSize()));
+			}
+		};
 	}
 }
