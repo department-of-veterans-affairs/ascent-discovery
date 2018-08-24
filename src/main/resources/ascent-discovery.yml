@@ -47,10 +47,15 @@ server:
 
 eureka: 
   shouldBatchReplication: true
+  instance:
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
   client: 
     registerWithEureka: true
+    securePortEnabled: true
     serviceUrl:
-      defaultZone: http://${discovery.username:eureka}:${discovery.password:default}@${discovery.server.peer.name:ascent-discovery}:${discovery.server.peer.port:8761}/eureka/
+      defaultZone: https://${discovery.username:eureka}:${discovery.password:default}@${discovery.server.peer.name:ascent-discovery}:${discovery.server.peer.port:8761}/eureka/
 ---
 spring:
     profiles: aws-prod
