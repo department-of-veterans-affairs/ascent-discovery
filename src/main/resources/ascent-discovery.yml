@@ -1,24 +1,13 @@
+server:
+  port: ${discovery.server.port:8761}
+  ssl:
+    enabled: false
 info:  
   build:
     version:  "@project.version@"
     artifact: "@project.artifactId@"
     name: "@project.name@"
     description: "@project.description@"
-
-server:
-  port: ${discovery.server.port:8761}
-#---
-#spring:
-#  profiles: aws-ci, aws-stage, aws-prod
-#server:
-  ssl:
-    enabled: true
-    key-alias: "@project.name@"
-    key-store: ${platform.server.keystore:src/test/resources/local-int/jks/keystore.jks}
-    key-store-password: ${platform.server.keystorePassword:password}
-    #trust-store: ${platform.server.truststore:src/test/resources/local-int/jks/truststore.jks}
-    #trust-store-password: ${platform.server.truststorePassword:password}
-
 security:
   basic:
     enabled: true
@@ -43,6 +32,18 @@ eureka:
 ---
 spring:
     profiles: docker-demo, aws-ci, aws-stage, aws-prod
+
+server:
+  ssl:
+    enabled: true
+    ######### These properties are set by the run-wrapper.sh script in the ascent-base container #########
+    # key-alias: @project.name@
+    # key-store: /app/certs/server.jks
+    # key-store-password: 
+    # trust-store: /app/certs/server-truststore.jks
+    # trust-store-password:
+    ######################################################################################################
+    client-auth: need
 
 eureka: 
   shouldBatchReplication: true
