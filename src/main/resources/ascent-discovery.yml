@@ -31,8 +31,7 @@ eureka:
 
 ---
 spring:
-    profiles: local-int, docker-demo, aws-ci, aws-stage, aws-prod
-
+  profiles: local-int, docker-demo, aws-ci, aws-stage, aws-prod
 server:
   ssl:
     enabled: true
@@ -67,6 +66,13 @@ server:
     key-store-password:  changeit
     trust-store: src/test/resources/ssl/truststore.jks
     trust-store-password: changeit
+eureka:
+  shouldBatchReplication: false
+  client: 
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: https://eureka:default@${eureka.instance.hostname:ascent-discovery}:${server.port:8761}/eureka/
 ---
 spring:
     profiles: aws-prod
