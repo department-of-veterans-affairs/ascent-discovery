@@ -1,24 +1,26 @@
 server:
   port: ${discovery.server.port:8761}
-info:  
+  ssl:
+    enabled: false
+info:
   build:
-    version:  "@project.version@"
-    artifact: "@project.artifactId@"
-    name: "@project.name@"
-    description: "@project.description@"
+    version: '@project.version@'
+    artifact: '@project.artifactId@'
+    name: '@project.name@'
+    description: '@project.description@'
 security:
   basic:
     enabled: true
   user:
-      name: ${discovery.username:eureka}
-      password: ${discovery.password:default}
+    name: ${discovery.username:eureka}
+    password: ${discovery.password:default}
 eureka:
   instance:
-    hostname: "${INSTANCE_HOST_NAME:localhost}"
+    hostname: ${INSTANCE_HOST_NAME:localhost}
     leaseRenewalIntervalInSeconds: 10
     leaseExpirationDurationInSeconds: 30
     metadataMap:
-      hostname : ${eureka.instance.hostname}
+      hostname: ${eureka.instance.hostname}
   client:
     registerWithEureka: false
     fetchRegistry: false
@@ -26,32 +28,52 @@ eureka:
     enableSelfPreservation: false
     waitTimeInMsWhenSyncEmpty: 0
     evictionIntervalTimerInMs: 10000
-
 ---
 spring:
-    profiles: docker-demo, aws-ci, aws-stage, aws-prod
-
-eureka: 
+  profiles: docker-demo, aws-ci, aws-stage, aws-prod
+server:
+  ssl:
+    enabled: true
+    client-auth: need
+eureka:
   shouldBatchReplication: true
-  client: 
+  instance:
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+  client:
     registerWithEureka: true
+    securePortEnabled: true
     serviceUrl:
-      defaultZone: http://${discovery.username:eureka}:${discovery.password:default}@${discovery.server.peer.name:ascent-discovery}:${discovery.server.peer.port:8761}/eureka/
+      defaultZone: https://${discovery.username:eureka}:${discovery.password:default}@${discovery.server.peer.name:ascent-discovery}:${discovery.server.peer.port:8761}/eureka/
 ---
 spring:
-    profiles: aws-prod
-eureka: 
+  profiles: local-int
+server:
+  ssl:
+    enabled: false
+eureka:
+  shouldBatchReplication: false
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://eureka:default@${eureka.instance.hostname:ascent-discovery}:${server.port:8761}/eureka/
+---
+spring:
+  profiles: aws-prod
+eureka:
   environment: PROD
   datacenter: cloud
 ---
 spring:
-    profiles: aws-stage
-eureka: 
+  profiles: aws-stage
+eureka:
   environment: STAGE
   datacenter: cloud
 ---
 spring:
-    profiles: aws-ci
-eureka: 
+  profiles: aws-ci
+eureka:
   environment: CI
   datacenter: cloud

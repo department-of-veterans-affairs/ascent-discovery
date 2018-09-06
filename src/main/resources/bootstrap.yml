@@ -3,4 +3,3 @@ spring:
     name: "@project.name@"
   config: 
     name: "@project.name@"
-  
