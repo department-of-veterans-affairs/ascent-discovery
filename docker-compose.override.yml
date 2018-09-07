@@ -1,0 +1,43 @@
+version: '3.3'
+services:
+  ascent-discovery:
+    build:
+      context: .
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker-demo
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_TOKEN=vaultroot
+      - eureka.client.registerWithEureka=false
+    networks:
+        - ascentnet
+    depends_on:
+      - vault
+    ports:
+        - 8761:8761
+  
+###### Vault ##########
+
+  vault:
+    image: ascent/ascent-vault
+    hostname: vault
+    cap_add:
+      - IPC_LOCK
+    environment:
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_DEV_ROOT_TOKEN_ID=vaultroot
+      - tls_disable=1
+      - GIT_ACCESS_TOKEN=$GIT_ACCESS_TOKEN
+    ports:
+      - "8200:8200"
+    command: server -dev
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8200/v1/sys/health"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+    networks:
+      - ascentnet
+    
+networks:
+  ascentnet:
+    driver: bridge
