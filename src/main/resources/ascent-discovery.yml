@@ -73,7 +73,7 @@ eureka:
   datacenter: cloud
 ---
 spring:
-  profiles: aws-ci
+  profiles: aws-ci, aws-dev
 eureka:
   environment: CI
   datacenter: cloud
