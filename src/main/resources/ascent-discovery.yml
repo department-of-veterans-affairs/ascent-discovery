@@ -30,7 +30,7 @@ eureka:
     evictionIntervalTimerInMs: 10000
 ---
 spring:
-  profiles: docker-demo, aws-ci, aws-stage, aws-prod
+  profiles: docker-demo, aws-ci, aws-dev, aws-stage, aws-prod
 server:
   ssl:
     enabled: true
