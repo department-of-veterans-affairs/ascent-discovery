@@ -1,4 +1,4 @@
-@Library('ascent') _
+@Library('ascent@plat-335') _
 
 microservicePipeline {
     imageName = 'ascent/ascent-discovery'
