@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  ascent-discovery:
+    image: ascent/ascent-discovery:${RELEASE_VERSION:-latest}
+    hostname: ascent-discovery
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILE:-aws-ci}
+      - VAULT_ADDR=${VAULT_ADDR}
+      - VAULT_TOKEN=${VAULT_TOKEN}
+    networks:
+        - ascentnet
+    ports:
+        - "8761"
+    logging:
+      driver: fluentd
+      options:
+        fluentd-async-connect: "true"
+        fluentd-max-retries: "10"
+        fluentd-retry-wait: "30s"
+    deploy:
+      placement:
+        constraints:
+        - node.role == worker
+  
+networks:
+  ascentnet:
+    external:
+      name: ascentnet

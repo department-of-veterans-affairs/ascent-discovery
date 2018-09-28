@@ -1,4 +1,4 @@
-@Library('ascent') _
+@Library('ascent@plat-336') _
 
 microservicePipeline {
     imageName = 'ascent/ascent-discovery'
@@ -18,4 +18,11 @@ microservicePipeline {
     serviceToTest = 'ascent-discovery'
     deployWaitTime = 60
     testVaultTokenRole = "ascent-platform"
+
+    /*********  Deployment Configuration ***********/
+    stackName = "discovery"
+    serviceName = "ascent-discovery"
+
+    //Default Deployment Configuration Values
+    composeFiles = ["docker-compose.deploy.yml"]
 }
