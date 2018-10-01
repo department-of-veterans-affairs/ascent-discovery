@@ -1,4 +1,4 @@
-@Library('ascent@plat-336') _
+@Library('ascent') _
 
 microservicePipeline {
     imageName = 'ascent/ascent-discovery'
@@ -24,5 +24,5 @@ microservicePipeline {
     serviceName = "ascent-discovery"
 
     //Default Deployment Configuration Values
-    composeFiles = ["docker-compose.deploy.yml"]
+    //composeFiles = ["docker-compose.yml"]
 }
