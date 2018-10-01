@@ -7,6 +7,7 @@ microservicePipeline {
     //trigger this build if successful
     upstreamProjects = '../ascent-platform/development'
 
+    /*********  CI Pipeline Testing Configuration ***********/
     /*
     Define a mapping of environment variables that will be populated with Vault token values
     from the associated vault token role
@@ -14,10 +15,11 @@ microservicePipeline {
     vaultTokens = [
         "VAULT_TOKEN": "ascent-platform"
     ]
-    testEnvironment = ['docker-compose.yml']
+    testEnvironment = ['docker-compose.yml', 'docker-compose.override.yml']
     serviceToTest = 'ascent-discovery'
     deployWaitTime = 60
     testVaultTokenRole = "ascent-platform"
+    containerPort = 8761
 
     /*********  Deployment Configuration ***********/
     stackName = "discovery"

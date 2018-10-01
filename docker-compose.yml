@@ -1,17 +1,56 @@
 version: '3.3'
 services:
   ascent-discovery:
-    image: ascent/ascent-discovery
+    image: ascent/ascent-discovery:${RELEASE_VERSION:-latest}
     hostname: ascent-discovery
     environment:
-      - SPRING_PROFILES_ACTIVE=aws-ci
-      - VAULT_ADDR=${VAULT_ADDR}
-      - VAULT_TOKEN=${VAULT_TOKEN}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}
+      - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
+      - VAULT_TOKEN=${VAULT_TOKEN:-vaultroot}
+      - discovery.server.peer.name=ascent-discovery-peer
+    logging:
+      driver: fluentd
+      options:
+        fluentd-async-connect: "true"
+        fluentd-max-retries: "10"
+        fluentd-retry-wait: "30s"
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
     networks:
         - ascentnet
     ports:
-        - "8761"
+        - "${PORT:-8761:8761}"
+
+  ascent-discovery-peer:
+    image: ascent/ascent-discovery:${RELEASE_VERSION:-latest}
+    hostname: ascent-discovery-peer
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}
+      - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
+      - VAULT_TOKEN=${VAULT_TOKEN:-vaultroot}
+      - discovery.server.peer.name=ascent-discovery
+    logging:
+      driver: fluentd
+      options:
+        fluentd-async-connect: "true"
+        fluentd-max-retries: "10"
+        fluentd-retry-wait: "30s"
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+        - ascentnet
+    ports:
+        - 8761
   
 networks:
   ascentnet:
-    driver: overlay
+    external:
+      name: ascentnet
