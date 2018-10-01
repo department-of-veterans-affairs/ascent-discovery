@@ -23,7 +23,7 @@ services:
     networks:
         - ascentnet
     ports:
-        - "8761:8761"
+        - "${PORT:-8761:8761}"
 
   ascent-discovery-peer:
     image: ascent/ascent-discovery:${RELEASE_VERSION:-latest}
