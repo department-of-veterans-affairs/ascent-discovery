@@ -3,17 +3,26 @@ services:
   ascent-discovery:
     build:
       context: .
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker-demo
-      - VAULT_ADDR=http://vault:8200
-      - VAULT_TOKEN=vaultroot
-      - eureka.client.registerWithEureka=false
-    networks:
-        - ascentnet
     depends_on:
       - vault
+    environment:
+      # The following line sets up the ability to connect a remote debugger process to port 8000 of the application.
+      # The application will not wait for the debugger to connect with this configuration. If you want the application to wait to
+      # start until the debugger connects, change the "suspend=n" portion of the debug config to "suspend=y"
+       - JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
     ports:
-        - 8761:8761
+       - 8761:8761
+       - 8000:8000
+    logging:
+       driver: json-file
+
+  ascent-discovery-peer:
+    build:
+      context: .
+    depends_on:
+      - vault
+    logging:
+       driver: json-file
   
 ###### Vault ##########
 
@@ -40,4 +49,4 @@ services:
     
 networks:
   ascentnet:
-    driver: bridge
+    driver: ${DRIVER_TYPE:-bridge}

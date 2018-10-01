@@ -14,7 +14,7 @@ microservicePipeline {
     vaultTokens = [
         "VAULT_TOKEN": "ascent-platform"
     ]
-    testEnvironment = ['docker-compose.yml']
+    testEnvironment = ['docker-compose.yml', 'docker-compose.override.yml']
     serviceToTest = 'ascent-discovery'
     deployWaitTime = 60
     testVaultTokenRole = "ascent-platform"
