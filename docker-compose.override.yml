@@ -36,8 +36,6 @@ services:
       - VAULT_DEV_ROOT_TOKEN_ID=vaultroot
       - tls_disable=1
       - GIT_ACCESS_TOKEN=$GIT_ACCESS_TOKEN
-    ports:
-      - "8200:8200"
     command: server -dev
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost:8200/v1/sys/health"]
