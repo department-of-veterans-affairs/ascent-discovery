@@ -24,6 +24,7 @@ microservicePipeline {
     /*********  Deployment Configuration ***********/
     stackName = "discovery"
     serviceName = "ascent-discovery"
+    isPlatform = true
 
     //Default Deployment Configuration Values
     //composeFiles = ["docker-compose.yml"]
