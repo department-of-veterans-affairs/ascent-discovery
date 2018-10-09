@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.4'
 services:
   ascent-discovery:
     image: ascent/ascent-discovery:${RELEASE_VERSION:-latest}
@@ -24,6 +24,12 @@ services:
         - ascentnet
     ports:
         - "${PORT:-8761:8761}"
+    healthcheck:
+      test: ["CMD", "/healthcheck", "--url", "https://localhost:8761/health"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 60s
 
   ascent-discovery-peer:
     image: ascent/ascent-discovery:${RELEASE_VERSION:-latest}
@@ -46,9 +52,15 @@ services:
         constraints:
           - node.role == worker
     networks:
-        - ascentnet
+      - ascentnet
     ports:
-        - 8761
+      - 8761
+    healthcheck:
+      test: ["CMD", "/healthcheck", "--url", "https://localhost:8761/health"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 60s
   
 networks:
   ascentnet:
