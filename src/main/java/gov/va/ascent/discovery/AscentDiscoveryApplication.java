@@ -11,6 +11,7 @@ import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletCon
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.metrics.export.prometheus.EnablePrometheusMetrics;
 
 /**
  * An <tt>Ascent Discovery Server</tt> enabled for Spring Boot Application and
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 @EnableEurekaServer
 @EnableDiscoveryClient
+@EnablePrometheusMetrics
 public class AscentDiscoveryApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AscentDiscoveryApplication.class);
