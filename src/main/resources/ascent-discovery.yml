@@ -12,8 +12,8 @@ security:
   basic:
     enabled: true
   user:
-    name: ${discovery.username:eureka}
-    password: ${discovery.password:default}
+    name: ${ascent.discovery.username:eureka}
+    password: ${ascent.discovery.password:default}
 eureka:
   instance:
     hostname: ${INSTANCE_HOST_NAME:localhost}
