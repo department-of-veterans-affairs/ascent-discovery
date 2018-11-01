@@ -1,4 +1,4 @@
-@Library('ascent') _
+@Library('ascent@maven-deps') _
 
 microservicePipeline {
     imageName = 'ascent/ascent-discovery'
