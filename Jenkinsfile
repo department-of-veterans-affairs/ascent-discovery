@@ -3,10 +3,6 @@
 microservicePipeline {
     imageName = 'ascent/ascent-discovery'
 
-    //Specify string of comma separated upstream projects that will
-    //trigger this build if successful
-    upstreamProjects = '../ascent-platform/development'
-
     /*********  CI Pipeline Testing Configuration ***********/
     /*
     Define a mapping of environment variables that will be populated with Vault token values
