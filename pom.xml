@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>gov.va.ascent</groupId>
+		<artifactId>ascent-platform-parent</artifactId>
+		<version>0.0.11</version>
+		<relativePath/>
+	</parent>
+	
+	<artifactId>ascent-discovery</artifactId>
+	<version>0.0.10</version>
+	<packaging>jar</packaging>
+
+	<name>${project.artifactId}</name>
+	<description>Ascent Project for Discovery Server</description>
+	
+	<!-- Docker properties to add minimum and maximum memory for spring boot jar start up -->
+    <properties>
+		<docker.java.opts.ms>-Xms64m</docker.java.opts.ms>
+		<docker.java.opts.mx>-Xmx256m</docker.java.opts.mx>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+		</dependency>
+		<dependency>
+ 		    <groupId>org.springframework.boot</groupId>
+ 		    <artifactId>spring-boot-starter-security</artifactId>
+ 		</dependency>
+ 		<dependency>
+ 		    <groupId>org.springframework.cloud</groupId>
+ 		    <artifactId>spring-cloud-aws-core</artifactId>
+ 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+		
+		<!-- ascent logging and audit configurations -->
+		<dependency>
+			<groupId>gov.va.ascent</groupId>
+			<artifactId>ascent-platform-starter-logger</artifactId>
+		</dependency>
+		
+		 <!-- logstash logback encoder -->
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+		</dependency>
+		
+		<!-- Metrics Support -->
+		<dependency>
+		 	<groupId>org.springframework.metrics</groupId>
+		  	<artifactId>spring-metrics</artifactId>
+		</dependency>
+		<!-- Prometheus Endpoint -->
+		<dependency>
+		  	<groupId>io.prometheus</groupId>
+		  	<artifactId>simpleclient_common</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>gov.va.ascent</groupId>
+			<artifactId>ascent-test-framework</artifactId>
+			<version>0.0.10</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+	
+	<build>
+		<plugins>
+	        <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+			
+</project>

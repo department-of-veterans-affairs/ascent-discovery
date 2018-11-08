@@ -1,0 +1,40 @@
+ <instance>
+    <instanceId>localhost:test-app:8760</instanceId>
+    <hostName>localhost</hostName>
+    <app>TESTAPP</app>
+    <ipAddr>localhost</ipAddr>
+    <status>UP</status>
+    <overriddenstatus>UNKNOWN</overriddenstatus>
+    <port enabled="true">8760</port>
+    <securePort enabled="false">443</securePort>
+    <countryId>1</countryId>
+    <dataCenterInfo class="com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo">
+      <name>MyOwn</name>
+    </dataCenterInfo>
+    <leaseInfo>
+      <renewalIntervalInSecs>5</renewalIntervalInSecs>
+      <durationInSecs>10</durationInSecs>
+      <registrationTimestamp>1510108813128</registrationTimestamp>
+      <lastRenewalTimestamp>1510110040072</lastRenewalTimestamp>
+      <evictionTimestamp>0</evictionTimestamp>
+      <serviceUpTimestamp>1510108813129</serviceUpTimestamp>
+    </leaseInfo>
+    <metadata>
+      <artifact>test-app</artifact>
+      <name>test-app</name>
+      <description>Ascent Test Project</description>
+      <user.name>admin</user.name>
+      <version>0.0.1-SNAPSHOT</version>
+      <management.context-path>/actuator</management.context-path>
+      <user.password>default</user.password>
+    </metadata>
+    <homePageUrl>http://localhost:8760/</homePageUrl>
+    <statusPageUrl>http://localhost:8760//actuator/info</statusPageUrl>
+    <healthCheckUrl>http://localhost:8760/actuator/health</healthCheckUrl>
+    <vipAddress>test-app</vipAddress>
+    <secureVipAddress>test-app</secureVipAddress>
+    <isCoordinatingDiscoveryServer>false</isCoordinatingDiscoveryServer>
+    <lastUpdatedTimestamp>1510108813129</lastUpdatedTimestamp>
+    <lastDirtyTimestamp>1510108752951</lastDirtyTimestamp>
+    <actionType>ADDED</actionType>
+  </instance>
