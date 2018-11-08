@@ -1,4 +1,4 @@
-@Library('ascent@deploy-prod') _
+@Library('ascent) _
 
 microservicePipeline {
     imageName = 'ascent/ascent-discovery'
