@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   ascent-discovery:
-    image: ascent/ascent-discovery:${RELEASE_VERSION:-latest}
+    image: nexus.internal.vetservices.gov:5000/ascent/ascent-discovery:${RELEASE_VERSION:-latest}
     hostname: ascent-discovery
     environment:
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}
@@ -38,7 +38,7 @@ services:
       start_period: 60s
 
   ascent-discovery-peer:
-    image: ascent/ascent-discovery:${RELEASE_VERSION:-latest}
+    image: nexus.internal.vetservices.gov:5000/ascent/ascent-discovery:${RELEASE_VERSION:-latest}
     hostname: ascent-discovery-peer
     environment:
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}

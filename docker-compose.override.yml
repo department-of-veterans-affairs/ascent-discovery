@@ -27,7 +27,7 @@ services:
 ###### Vault ##########
 
   vault:
-    image: ascent/ascent-vault
+    image: nexus.internal.vetservices.gov:5000/ascent/ascent-vault
     hostname: vault
     cap_add:
       - IPC_LOCK
