@@ -23,7 +23,7 @@ src/inttest/java/gov/va/ascent/discovery/steps- The implementation steps related
 
 src/inttest/java/gov/va/ascent/discovery/runner - Cucumber runner class that contains all feature file entries that needs to be executed at runtime. The annotations provided in the cucumber runner class will assist in bridging the features to step definitions.
 
-src/inttest/resources/config/vetservices-ci.properties – CI configuration properties such as URL are specified here.
+src/inttest/resources/config/vetservices-dev.properties – DEV configuration properties such as URL are specified here.
 
 src/inttest/resources/config/vetservices-stage.properties – STAGE configuration properties such as URL are specified here.
 
@@ -34,9 +34,9 @@ Default Local: mvn -Ddockerfile.skip=true integration-test -Pinttest
 
 Use below sample commands to execute for different environment: 
   
-CI : mvn -Ddockerfile.skip=true integration-test -Pinttest -Dtest.env=ci -DX-Vault-Token=<<token>> -DbaseURL=https://ci.internal.vets-api.gov:8761
+DEV : mvn -Ddockerfile.skip=true integration-test -Pinttest -Dtest.env=dev -DX-Vault-Token=<<token>> -DbaseURL=https://ci.internal.vets-api.gov:8761
   
-CI: mvn -Ddockerfile.skip=true integration-test -Pinttest -DX-Vault-Token=<<token>> -Dtest.env=ci -DbaseURL=https://ci.internal.vets-api.gov:8761 -Dvault.url.domain=https://vault.internal.vets-api.gov:8200
+DEV : mvn -Ddockerfile.skip=true integration-test -Pinttest -DX-Vault-Token=<<token>> -Dtest.env=dev -DbaseURL=https://ci.internal.vets-api.gov:8761 -Dvault.url.domain=https://vault.internal.vets-api.gov:8200
   
 STAGE : mvn -Ddockerfile.skip=true integration-test -Pinttest -Dtest.env=stage -DX-Vault-Token=<<token>> -DbaseURL=https://stage.internal.vets-api.gov:8761
   
